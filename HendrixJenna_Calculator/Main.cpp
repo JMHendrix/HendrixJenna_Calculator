@@ -35,4 +35,20 @@ Main::~Main()
 
 void Main::OnButtonClicked()
 {
+	//switch (event.GetId()) {
+	//case 10001:
+	//	num1.append("1");
+	//case 10002:
+	//	num1.append("2");
+	//case 10003:
+	//	num1.append("3");
+	//case 10004:
+	//	num1.append("4");
+	//case 10005:
+	//	num1.append("5");
+
+
+
+
+	//}
 }
