@@ -64,26 +64,57 @@ Main::~Main()
 void Main::OnButtonClicked(wxCommandEvent& event)
 {
 
+	std::string temp;
 
 	switch (event.GetId()) {
 	case 10001:
+		//one
 		number.append("1");
 		answerBox->ChangeValue(number);
 		break;
 	case 10002:
+		//two
 		number.append("2");
 		answerBox->ChangeValue(number);
 		break;
 	case 10003:
+		//three
 		number.append("3");
 		answerBox->ChangeValue(number);
 		break;
 	case 10004:
+		//four
 		number.append("4");
 		answerBox->ChangeValue(number);
 		break;
 	case 10005:
+		//five
 		number.append("5");
+		answerBox->ChangeValue(number);
+		break;
+	case 10006:
+		//six
+		number.append("6");
+		answerBox->ChangeValue(number);
+		break;
+	case 10007:
+		//seven
+		number.append("7");
+		answerBox->ChangeValue(number);
+		break;	
+	case 10008:
+		//eight
+		number.append("8");
+		answerBox->ChangeValue(number);
+		break;	
+	case 10009:
+		//nine
+		number.append("9");
+		answerBox->ChangeValue(number);
+		break;	
+	case 10010:
+		//zero
+		number.append("0");
 		answerBox->ChangeValue(number);
 		break;
 	case 10011:
@@ -91,9 +122,58 @@ void Main::OnButtonClicked(wxCommandEvent& event)
 		number.append(".");
 		answerBox->ChangeValue(number);
 		break;
+	case 10012:
+		//negative
+		temp = number;
+		number = "-" + temp;
+		answerBox->ChangeValue(number);
+		break;
 	case 10013:
+		//add
 		mathFunction = "ADD";
-		num1 = std::stoi(number);
+		num1 = std::stod(number);
+		number = "0";
+		answerBox->Clear();
+		break;
+	case 10014:
+		//subtract
+		mathFunction = "SUBTRACT";
+		num1 = std::stod(number);
+		number = "0";
+		answerBox->Clear();
+		break;
+	case 10015:
+		//multiply
+		mathFunction = "MULTIPLY";
+		num1 = std::stod(number);
+		number = "0";
+		answerBox->Clear();
+		break;
+	case 10016:
+		//divide
+		mathFunction = "DIVIDE";
+		num1 = std::stod(number);
+		number = "0";
+		answerBox->Clear();
+		break;
+	case 10017:
+		//binary
+		mathFunction = "BINARY";
+		num1 = std::stod(number);
+		number = "0";
+		answerBox->Clear();
+		break;
+	case 10018:
+		//hex
+		mathFunction = "HEX";
+		num1 = std::stod(number);
+		number = "0";
+		answerBox->Clear();
+		break;
+	case 10019:
+		//mod
+		mathFunction = "MOD";
+		num1 = std::stod(number);
 		number = "0";
 		answerBox->Clear();
 		break;
