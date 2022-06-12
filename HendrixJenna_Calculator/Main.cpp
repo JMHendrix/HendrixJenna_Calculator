@@ -31,7 +31,30 @@ Main::Main() : wxFrame(nullptr, wxID_ANY, "Calculator - Jenna", wxPoint(50,50), 
 	buttonClear = new wxButton(this, 10020, "C", wxPoint(200, 330), wxSize(60, 40));
 	buttonEqual = new wxButton(this, 10021, "=", wxPoint(10, 330), wxSize(180, 40));
 
+	buttonOne->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonTwo->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonThree->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonFour->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonFive->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonSix->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonSeven->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonEight->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonNine->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonZero->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonDecimal->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonNegative->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonAdd->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonSubtract->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonMultiply->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonDivide->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonBinary->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonHex->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonModulo->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonClear->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	buttonEqual->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
 
+	float num1 = 0;
+	float num2 = 0;
 }
 
 Main::~Main()
@@ -40,33 +63,48 @@ Main::~Main()
 
 void Main::OnButtonClicked(wxCommandEvent& event)
 {
-	double num1 = 0;
+
 
 	switch (event.GetId()) {
 	case 10001:
 		number.append("1");
 		answerBox->ChangeValue(number);
+		break;
 	case 10002:
 		number.append("2");
+		answerBox->ChangeValue(number);
+		break;
 	case 10003:
 		number.append("3");
+		answerBox->ChangeValue(number);
+		break;
 	case 10004:
 		number.append("4");
+		answerBox->ChangeValue(number);
+		break;
 	case 10005:
 		number.append("5");
+		answerBox->ChangeValue(number);
+		break;
 	case 10013:
 		mathFunction = "ADD";
-		 num1 = std::stod(number);
+		num1 = std::stof(number);
+		number = "0";
+		answerBox->Clear();
+		break;
 	case 10020:
 		//clear the text
+		number = "0";
 		answerBox->Clear();
+		break;
 	case 10021:
-		double num2 = std::stod(number);
-		double answer = 0;
+		num2 = std::stod(number);
+		float answer = 0;
 		if (mathFunction == "ADD") {
 			 answer = num1 + num2;
 		}
 		answerBox->ChangeValue(std::to_string(answer));
+		break;
 
 	}
 	event.Skip();
