@@ -1,5 +1,8 @@
 #include "Main.h"
 
+wxBEGIN_EVENT_TABLE(Main, wxFrame)
+wxEND_EVENT_TABLE()
+
 Main::Main() : wxFrame(nullptr, wxID_ANY, "Calculator - Jenna", wxPoint(50,50), wxSize(285,420 ))
 {
 	//create and place the text ctrl where the answers will display.
@@ -27,28 +30,44 @@ Main::Main() : wxFrame(nullptr, wxID_ANY, "Calculator - Jenna", wxPoint(50,50), 
 	buttonModulo = new wxButton(this, 10019, "%", wxPoint(200, 290), wxSize(60, 30));
 	buttonClear = new wxButton(this, 10020, "C", wxPoint(200, 330), wxSize(60, 40));
 	buttonEqual = new wxButton(this, 10021, "=", wxPoint(10, 330), wxSize(180, 40));
+
+
 }
 
 Main::~Main()
 {
 }
 
-void Main::OnButtonClicked()
+void Main::OnButtonClicked(wxCommandEvent& event)
 {
-	//switch (event.GetId()) {
-	//case 10001:
-	//	num1.append("1");
-	//case 10002:
-	//	num1.append("2");
-	//case 10003:
-	//	num1.append("3");
-	//case 10004:
-	//	num1.append("4");
-	//case 10005:
-	//	num1.append("5");
+	double num1 = 0;
 
+	switch (event.GetId()) {
+	case 10001:
+		number.append("1");
+		answerBox->ChangeValue(number);
+	case 10002:
+		number.append("2");
+	case 10003:
+		number.append("3");
+	case 10004:
+		number.append("4");
+	case 10005:
+		number.append("5");
+	case 10013:
+		mathFunction = "ADD";
+		 num1 = std::stod(number);
+	case 10020:
+		//clear the text
+		answerBox->Clear();
+	case 10021:
+		double num2 = std::stod(number);
+		double answer = 0;
+		if (mathFunction == "ADD") {
+			 answer = num1 + num2;
+		}
+		answerBox->ChangeValue(std::to_string(answer));
 
-
-
-	//}
+	}
+	event.Skip();
 }
