@@ -35,8 +35,8 @@ public:
 
 	wxTextCtrl* answerBox;
 	
-	float num1;
-	float num2;
+	double num1;
+	double num2;
 	std::string number;
 	std::string mathFunction;
 

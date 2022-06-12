@@ -53,8 +53,8 @@ Main::Main() : wxFrame(nullptr, wxID_ANY, "Calculator - Jenna", wxPoint(50,50), 
 	buttonClear->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
 	buttonEqual->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
 
-	float num1 = 0;
-	float num2 = 0;
+	double num1 = 0;
+	double num2 = 0;
 }
 
 Main::~Main()
@@ -86,9 +86,14 @@ void Main::OnButtonClicked(wxCommandEvent& event)
 		number.append("5");
 		answerBox->ChangeValue(number);
 		break;
+	case 10011:
+		//decimal
+		number.append(".");
+		answerBox->ChangeValue(number);
+		break;
 	case 10013:
 		mathFunction = "ADD";
-		num1 = std::stof(number);
+		num1 = std::stoi(number);
 		number = "0";
 		answerBox->Clear();
 		break;
@@ -98,12 +103,20 @@ void Main::OnButtonClicked(wxCommandEvent& event)
 		answerBox->Clear();
 		break;
 	case 10021:
+		//equals
 		num2 = std::stod(number);
-		float answer = 0;
+		double answer = 0;
 		if (mathFunction == "ADD") {
 			 answer = num1 + num2;
 		}
-		answerBox->ChangeValue(std::to_string(answer));
+		std::string ansString = std::to_string(answer);
+		ansString.erase(ansString.find_last_not_of('0') + 1, std::string::npos);
+		answerBox->ChangeValue(ansString);
+		num1 = 0;
+		num2 = 0;
+		number = "0";
+		answer = 0;
+		ansString = "";
 		break;
 
 	}
