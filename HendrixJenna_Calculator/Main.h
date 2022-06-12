@@ -35,7 +35,10 @@ public:
 
 	wxTextCtrl* answerBox;
 
+	std::string num1;
+	std::string num2;
 
-	void OnButtonClicked();
+	void OnButtonClicked(wxCommandEvent &event);
+	wxDECLARE_EVENT_TABLE();
 };
 
