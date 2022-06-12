@@ -186,9 +186,29 @@ void Main::OnButtonClicked(wxCommandEvent& event)
 		//equals
 		num2 = std::stod(number);
 		double answer = 0;
+
 		if (mathFunction == "ADD") {
 			 answer = num1 + num2;
 		}
+		else if (mathFunction == "SUBTRACT") {
+			answer = num1 - num2;
+		}
+		else if (mathFunction == "MULTIPLY") {
+			answer = num1 * num2;
+		}
+		else if (mathFunction == "DIVIDE") {
+			answer = num1 / num2;
+		}
+		else if (mathFunction == "BINARY") {
+			answer = num1 - num2;
+		}
+		else if (mathFunction == "HEX") {
+			answer = num1 - num2;
+		}
+		else if (mathFunction == "MOD") {
+			answer = num1 - num2;
+		}
+
 		std::string ansString = std::to_string(answer);
 		ansString.erase(ansString.find_last_not_of('0') + 1, std::string::npos);
 		answerBox->ChangeValue(ansString);
