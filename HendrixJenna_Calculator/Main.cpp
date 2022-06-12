@@ -206,7 +206,7 @@ void Main::OnButtonClicked(wxCommandEvent& event)
 			answer = num1 - num2;
 		}
 		else if (mathFunction == "MOD") {
-			answer = num1 - num2;
+			answer = remainder(num1, num2);
 		}
 
 		std::string ansString = std::to_string(answer);
