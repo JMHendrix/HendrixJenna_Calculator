@@ -34,8 +34,13 @@ public:
 	wxButton* buttonEqual;
 
 	wxTextCtrl* answerBox;
+	
+	double num1;
+	double num2;
+	std::string number;
+	std::string mathFunction;
 
-
-	void OnButtonClicked();
+	void OnButtonClicked(wxCommandEvent &event);
+	wxDECLARE_EVENT_TABLE();
 };
 

@@ -1,5 +1,29 @@
 #include "Main.h"
 
+wxBEGIN_EVENT_TABLE(Main, wxFrame)
+	EVT_BUTTON(10001, Main::OnButtonClicked)
+	EVT_BUTTON(10002, Main::OnButtonClicked)
+	EVT_BUTTON(10003, Main::OnButtonClicked)
+	EVT_BUTTON(10004, Main::OnButtonClicked)
+	EVT_BUTTON(10005, Main::OnButtonClicked)
+	EVT_BUTTON(10006, Main::OnButtonClicked)
+	EVT_BUTTON(10007, Main::OnButtonClicked)
+	EVT_BUTTON(10008, Main::OnButtonClicked)
+	EVT_BUTTON(10009, Main::OnButtonClicked)
+	EVT_BUTTON(10010, Main::OnButtonClicked)
+	EVT_BUTTON(10011, Main::OnButtonClicked)
+	EVT_BUTTON(10012, Main::OnButtonClicked)
+	EVT_BUTTON(10013, Main::OnButtonClicked)
+	EVT_BUTTON(10014, Main::OnButtonClicked)
+	EVT_BUTTON(10015, Main::OnButtonClicked)
+	EVT_BUTTON(10016, Main::OnButtonClicked)
+	EVT_BUTTON(10017, Main::OnButtonClicked)
+	EVT_BUTTON(10018, Main::OnButtonClicked)
+	EVT_BUTTON(10019, Main::OnButtonClicked)
+	EVT_BUTTON(10020, Main::OnButtonClicked)
+	EVT_BUTTON(10021, Main::OnButtonClicked)
+wxEND_EVENT_TABLE()
+
 Main::Main() : wxFrame(nullptr, wxID_ANY, "Calculator - Jenna", wxPoint(50,50), wxSize(285,420 ))
 {
 	//create and place the text ctrl where the answers will display.
@@ -27,13 +51,136 @@ Main::Main() : wxFrame(nullptr, wxID_ANY, "Calculator - Jenna", wxPoint(50,50), 
 	buttonModulo = new wxButton(this, 10019, "%", wxPoint(200, 290), wxSize(60, 30));
 	buttonClear = new wxButton(this, 10020, "C", wxPoint(200, 330), wxSize(60, 40));
 	buttonEqual = new wxButton(this, 10021, "=", wxPoint(10, 330), wxSize(180, 40));
+
+	
+
+	double num1 = 0;
+	double num2 = 0;
 }
 
 Main::~Main()
 {
 }
 
-void Main::OnButtonClicked()
+void Main::OnButtonClicked(wxCommandEvent& event)
 {
 
+	std::string temp;
+
+	switch (event.GetId()) {
+	case 10001:
+		//one
+		number.append("1");
+		answerBox->ChangeValue(number);
+		break;
+	case 10002:
+		//two
+		number.append("2");
+		answerBox->ChangeValue(number);
+		break;
+	case 10003:
+		//three
+		number.append("3");
+		answerBox->ChangeValue(number);
+		break;
+	case 10004:
+		//four
+		number.append("4");
+		answerBox->ChangeValue(number);
+		break;
+	case 10005:
+		//five
+		number.append("5");
+		answerBox->ChangeValue(number);
+		break;
+	case 10006:
+		//six
+		number.append("6");
+		answerBox->ChangeValue(number);
+		break;
+	case 10007:
+		//seven
+		number.append("7");
+		answerBox->ChangeValue(number);
+		break;	
+	case 10008:
+		//eight
+		number.append("8");
+		answerBox->ChangeValue(number);
+		break;	
+	case 10009:
+		//nine
+		number.append("9");
+		answerBox->ChangeValue(number);
+		break;	
+	case 10010:
+		//zero
+		number.append("0");
+		answerBox->ChangeValue(number);
+		break;
+	case 10011:
+		//decimal
+		number.append(".");
+		answerBox->ChangeValue(number);
+		break;
+	case 10012:
+		//negative
+		temp = number;
+		number.append("(-)");
+		answerBox->ChangeValue(number);
+		break;
+	case 10013:
+		//add
+		mathFunction = "ADD";
+		number.append("+");
+		answerBox->ChangeValue(number);
+		break;
+	case 10014:
+		//subtract
+		mathFunction = "SUBTRACT";
+		number.append("-");
+		answerBox->ChangeValue(number);
+		break;
+	case 10015:
+		//multiply
+		mathFunction = "MULTIPLY";
+		number.append("*");
+		answerBox->ChangeValue(number);
+		break;
+	case 10016:
+		//divide
+		mathFunction = "DIVIDE";
+		number.append("/");
+		answerBox->ChangeValue(number);
+		break;
+	case 10017:
+		//binary
+		mathFunction = "BINARY";
+		number.append(" BINARY ");
+		answerBox->ChangeValue(number);
+		break;
+	case 10018:
+		//hex
+		mathFunction = "HEX";
+		number.append(" HEX ");
+		answerBox->ChangeValue(number);
+		break;
+	case 10019:
+		//mod
+		mathFunction = "MOD";
+		number.append("%");
+		answerBox->ChangeValue(number);
+		break;
+	case 10020:
+		//clear the text
+		number.append(" C ");
+		answerBox->ChangeValue(number);
+		break;
+	case 10021:
+		//equals
+		number.append("=");
+		answerBox->ChangeValue(number);
+		break;
+	}
+	event.Skip();
 }
