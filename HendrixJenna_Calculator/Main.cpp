@@ -1,6 +1,27 @@
 #include "Main.h"
 
 wxBEGIN_EVENT_TABLE(Main, wxFrame)
+	EVT_BUTTON(10001, Main::OnButtonClicked)
+	EVT_BUTTON(10002, Main::OnButtonClicked)
+	EVT_BUTTON(10003, Main::OnButtonClicked)
+	EVT_BUTTON(10004, Main::OnButtonClicked)
+	EVT_BUTTON(10005, Main::OnButtonClicked)
+	EVT_BUTTON(10006, Main::OnButtonClicked)
+	EVT_BUTTON(10007, Main::OnButtonClicked)
+	EVT_BUTTON(10008, Main::OnButtonClicked)
+	EVT_BUTTON(10009, Main::OnButtonClicked)
+	EVT_BUTTON(10010, Main::OnButtonClicked)
+	EVT_BUTTON(10011, Main::OnButtonClicked)
+	EVT_BUTTON(10012, Main::OnButtonClicked)
+	EVT_BUTTON(10013, Main::OnButtonClicked)
+	EVT_BUTTON(10014, Main::OnButtonClicked)
+	EVT_BUTTON(10015, Main::OnButtonClicked)
+	EVT_BUTTON(10016, Main::OnButtonClicked)
+	EVT_BUTTON(10017, Main::OnButtonClicked)
+	EVT_BUTTON(10018, Main::OnButtonClicked)
+	EVT_BUTTON(10019, Main::OnButtonClicked)
+	EVT_BUTTON(10020, Main::OnButtonClicked)
+	EVT_BUTTON(10021, Main::OnButtonClicked)
 wxEND_EVENT_TABLE()
 
 Main::Main() : wxFrame(nullptr, wxID_ANY, "Calculator - Jenna", wxPoint(50,50), wxSize(285,420 ))
@@ -31,27 +52,7 @@ Main::Main() : wxFrame(nullptr, wxID_ANY, "Calculator - Jenna", wxPoint(50,50), 
 	buttonClear = new wxButton(this, 10020, "C", wxPoint(200, 330), wxSize(60, 40));
 	buttonEqual = new wxButton(this, 10021, "=", wxPoint(10, 330), wxSize(180, 40));
 
-	buttonOne->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonTwo->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonThree->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonFour->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonFive->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonSix->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonSeven->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonEight->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonNine->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonZero->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonDecimal->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonNegative->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonAdd->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonSubtract->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonMultiply->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonDivide->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonBinary->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonHex->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonModulo->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonClear->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
-	buttonEqual->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
+	
 
 	double num1 = 0;
 	double num2 = 0;
@@ -125,98 +126,60 @@ void Main::OnButtonClicked(wxCommandEvent& event)
 	case 10012:
 		//negative
 		temp = number;
-		number = "-" + temp;
+		number.append("(-)");
 		answerBox->ChangeValue(number);
 		break;
 	case 10013:
 		//add
 		mathFunction = "ADD";
-		num1 = std::stod(number);
-		number = "0";
-		answerBox->Clear();
+		number.append("+");
+		answerBox->ChangeValue(number);
 		break;
 	case 10014:
 		//subtract
 		mathFunction = "SUBTRACT";
-		num1 = std::stod(number);
-		number = "0";
-		answerBox->Clear();
+		number.append("-");
+		answerBox->ChangeValue(number);
 		break;
 	case 10015:
 		//multiply
 		mathFunction = "MULTIPLY";
-		num1 = std::stod(number);
-		number = "0";
-		answerBox->Clear();
+		number.append("*");
+		answerBox->ChangeValue(number);
 		break;
 	case 10016:
 		//divide
 		mathFunction = "DIVIDE";
-		num1 = std::stod(number);
-		number = "0";
-		answerBox->Clear();
+		number.append("/");
+		answerBox->ChangeValue(number);
 		break;
 	case 10017:
 		//binary
 		mathFunction = "BINARY";
-		num1 = std::stod(number);
-		number = "0";
-		answerBox->Clear();
+		number.append(" BINARY ");
+		answerBox->ChangeValue(number);
 		break;
 	case 10018:
 		//hex
 		mathFunction = "HEX";
-		num1 = std::stod(number);
-		number = "0";
-		answerBox->Clear();
+		number.append(" HEX ");
+		answerBox->ChangeValue(number);
 		break;
 	case 10019:
 		//mod
 		mathFunction = "MOD";
-		num1 = std::stod(number);
-		number = "0";
-		answerBox->Clear();
+		number.append("%");
+		answerBox->ChangeValue(number);
 		break;
 	case 10020:
 		//clear the text
-		number = "0";
-		answerBox->Clear();
+		number.append(" C ");
+		answerBox->ChangeValue(number);
 		break;
 	case 10021:
 		//equals
-		num2 = std::stod(number);
-		double answer = 0;
-
-		if (mathFunction == "ADD") {
-			 answer = num1 + num2;
-		}
-		else if (mathFunction == "SUBTRACT") {
-			answer = num1 - num2;
-		}
-		else if (mathFunction == "MULTIPLY") {
-			answer = num1 * num2;
-		}
-		else if (mathFunction == "DIVIDE") {
-			answer = num1 / num2;
-		}
-		else if (mathFunction == "BINARY") {
-			answer = num1 - num2;
-		}
-		else if (mathFunction == "HEX") {
-			answer = num1 - num2;
-		}
-		else if (mathFunction == "MOD") {
-			answer = remainder(num1, num2);
-		}
-
-		std::string ansString = std::to_string(answer);
-		ansString.erase(ansString.find_last_not_of('0') + 1, std::string::npos);
-		answerBox->ChangeValue(ansString);
-		num1 = 0;
-		num2 = 0;
-		number = "0";
-		answer = 0;
-		ansString = "";
+		number.append("=");
+		answerBox->ChangeValue(number);
 		break;
 
 	}
