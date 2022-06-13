@@ -181,7 +181,6 @@ void Main::OnButtonClicked(wxCommandEvent& event)
 		number.append("=");
 		answerBox->ChangeValue(number);
 		break;
-
 	}
 	event.Skip();
 }
