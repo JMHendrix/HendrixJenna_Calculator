@@ -22,7 +22,6 @@ public:
 	wxButton* buttonZero;	
 	wxButton* buttonDecimal;
 	wxButton* buttonNegative;
-
 	wxButton* buttonAdd;
 	wxButton* buttonSubtract;
 	wxButton* buttonMultiply;
