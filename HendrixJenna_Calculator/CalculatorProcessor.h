@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Main.h"
 class CalculatorProcessor
 {
 private:
@@ -22,39 +23,49 @@ public:
 	void operator=(const CalculatorProcessor& other) = delete; //assignment operator
 
 
-	static int GetAddition(int num1, int num2) {
+	void GetAddition(int num1, int num2, Main* main) {
 		std::string result = "";
 		int num3 = num1 + num2;
 		result = std::to_string(num3);
-
+		main->answerBox->ChangeValue(result);
 	}
 
-	std::string GetSubtraction(int num1, int num2) {
+	void GetSubtraction(int num1, int num2, Main* main) {
 		std::string result = "";
 		int num3 = num1 - num2;
 		result = std::to_string(num3);
-		return result;
+		main->answerBox->ChangeValue(result);
+
 	}
 
-	std::string GetMultiplication(int num1, int num2) {
+	void GetMultiplication(int num1, int num2, Main* main) {
 		std::string result = "";
 		int num3 = num1 * num2;
 		result = std::to_string(num3);
-		return result;
+		main->answerBox->ChangeValue(result);
+
 	}
 
-	std::string GetDivision(int num1, int num2) {
+	void GetDivision(int num1, int num2, Main* main) {
 		std::string result = "";
 		int num3 = num1 / num2;
 		result = std::to_string(num3);
-		return result;
+		main->answerBox->ChangeValue(result);
+
 	}
 
-	std::string GetDecimal() {
+	void GetModulo(int num1, int num2, Main* main) {
+		std::string result = "";
+		int num3 = num1 % num2;
+		result = std::to_string(num3);
+		main->answerBox->ChangeValue(result);
+	}
+
+	std::string GetDecimal(Main* main) {
 		return std::to_string(baseNumber);
 	}
 
-	std::string GetHexadecimal() {
+	void GetHexadecimal(Main* main) {
 		std::string results = "";
 		int number = baseNumber;
 		while (number > 0) {
@@ -84,10 +95,11 @@ public:
 			number = number / 16;
 		}
 		results = "0x" + results;
-		return results;
+		main->answerBox->ChangeValue(results);
+
 	}
 
-	std::string GetBinary() {
+	void GetBinary( Main* main) {
 		std::string results = "";
 		int number = baseNumber;
 		for (int i = 0; i < 32; i++) {
@@ -104,9 +116,14 @@ public:
 
 		}
 
-		return results;
+		main->answerBox->ChangeValue(results);
 	}
 
+	void Clear(Main* main) {
+		main->num1 = 0;
+		main->num2 = 0;
+		main->answerBox->ChangeValue("");
+	}
 
 };
 

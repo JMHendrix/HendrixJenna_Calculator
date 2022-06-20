@@ -1,5 +1,6 @@
 #include "Main.h"
 #include "ButtonFactory.h"
+#include "CalculatorProcessor.h"
 
 Main::Main() : wxFrame(nullptr, wxID_ANY, "Calculator - Jenna", wxPoint(50,50), wxSize(285,420 ))
 {
@@ -42,7 +43,7 @@ Main::~Main()
 
 void Main::OnButtonClicked(wxCommandEvent& event)
 {
-
+	CalculatorProcessor* processor = CalculatorProcessor::GetInstance();
 	std::string temp;
 
 	switch (event.GetId()) {
@@ -104,60 +105,82 @@ void Main::OnButtonClicked(wxCommandEvent& event)
 	case 10012:
 		//negative
 		temp = number;
-		number.append("(-)");
+		number = "-" + temp;
 		answerBox->ChangeValue(number);
 		break;
 	case 10013:
 		//add
 		mathFunction = "ADD";
-		number.append("+");
-		answerBox->ChangeValue(number);
+		num1 = std::stoi(number);
+		number = "";
+		answerBox->ChangeValue("+ ");
 		break;
 	case 10014:
 		//subtract
 		mathFunction = "SUBTRACT";
-		number.append("-");
-		answerBox->ChangeValue(number);
+		num1 = std::stoi(number);
+		number = "";
+		answerBox->ChangeValue("- ");
 		break;
 	case 10015:
 		//multiply
 		mathFunction = "MULTIPLY";
-		number.append("*");
-		answerBox->ChangeValue(number);
+		num1 = std::stoi(number);
+		number = "";
+		answerBox->ChangeValue("* ");
 		break;
 	case 10016:
 		//divide
 		mathFunction = "DIVIDE";
-		number.append("/");
-		answerBox->ChangeValue(number);
+		num1 = std::stoi(number);
+		number = "";
+		answerBox->ChangeValue("/ ");
 		break;
 	case 10017:
 		//binary
-		mathFunction = "BINARY";
-		number.append(" BINARY ");
-		answerBox->ChangeValue(number);
+		processor->SetBaseNumber(std::stoi(number));
+		number = "";
+		processor->GetBinary(this);
 		break;
 	case 10018:
 		//hex
 		mathFunction = "HEX";
-		number.append(" HEX ");
-		answerBox->ChangeValue(number);
+		processor->SetBaseNumber(std::stoi(number));
+		number = "";
+		processor->GetHexadecimal(this);
 		break;
 	case 10019:
 		//mod
 		mathFunction = "MOD";
-		number.append("%");
-		answerBox->ChangeValue(number);
+		num1 = std::stoi(number);
+		number = "";
+		answerBox->ChangeValue("% ");
 		break;
 	case 10020:
 		//clear the text
-		number.append(" C ");
-		answerBox->ChangeValue(number);
+		processor->Clear(this);
 		break;
 	case 10021:
 		//equals
 		number.append("=");
 		answerBox->ChangeValue(number);
+		num2 = std::stod(number);
+		number = "";
+		if (mathFunction == "ADD") {
+			processor->GetAddition(num1, num2, this);
+		}
+		else if (mathFunction == "SUBTRACT") {
+			processor->GetSubtraction(num1, num2, this);
+		}
+		else if (mathFunction == "MULTIPLY") {
+			processor->GetMultiplication(num1, num2, this);
+		}
+		else if (mathFunction == "DIVIDE") {
+			processor->GetDivision(num1, num2, this);
+		}
+		else if (mathFunction == "MOD") {
+			processor->GetModulo(num1, num2, this);
+		}
 		break;
 	}
 	event.Skip();
