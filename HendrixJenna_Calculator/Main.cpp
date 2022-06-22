@@ -166,21 +166,26 @@ void Main::OnButtonClicked(wxCommandEvent& event)
 		answerBox->ChangeValue(number);
 		num2 = std::stod(number);
 		number = "";
-		if (mathFunction == "ADD") {
-			processor->GetAddition(num1, num2, this);
-		}
-		else if (mathFunction == "SUBTRACT") {
-			processor->GetSubtraction(num1, num2, this);
-		}
-		else if (mathFunction == "MULTIPLY") {
-			processor->GetMultiplication(num1, num2, this);
-		}
-		else if (mathFunction == "DIVIDE") {
-			processor->GetDivision(num1, num2, this);
-		}
-		else if (mathFunction == "MOD") {
-			processor->GetModulo(num1, num2, this);
-		}
+		processor->Equal(this, mathFunction, num1, num2);
+		//if (mathFunction == "ADD") {
+		//	processor->GetAddition(num1, num2, this);
+		//}
+		//else if (mathFunction == "SUBTRACT") {
+		//	processor->GetSubtraction(num1, num2, this);
+		//}
+		//else if (mathFunction == "MULTIPLY") {
+		//	processor->GetMultiplication(num1, num2, this);
+		//}
+		//else if (mathFunction == "DIVIDE") {
+		//	processor->GetDivision(num1, num2, this);
+		//}
+		//else if (mathFunction == "MOD") {
+		//	processor->GetModulo(num1, num2, this);
+		//}
+
+		//for (int i = 0; i < processor->commands.size(); i++) {
+		//	processor->commands[i]->Execute(num1, num2, this);
+		//}
 		break;
 	}
 	event.Skip();

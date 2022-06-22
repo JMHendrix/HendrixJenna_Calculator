@@ -1,6 +1,14 @@
 #pragma once
 #include <string>
 #include "Main.h"
+#include <vector>
+#include <string>
+#include "IBaseCommand.h"
+#include "Add.h"
+#include "Subtract.h"
+#include "Multiply.h"
+#include "Divide.h"
+
 class CalculatorProcessor
 {
 private:
@@ -22,37 +30,9 @@ public:
 	CalculatorProcessor(CalculatorProcessor& other) = delete; //copy constructor
 	void operator=(const CalculatorProcessor& other) = delete; //assignment operator
 
-
-	void GetAddition(int num1, int num2, Main* main) {
-		std::string result = "";
-		int num3 = num1 + num2;
-		result = std::to_string(num3);
-		main->answerBox->ChangeValue(result);
-	}
-
-	void GetSubtraction(int num1, int num2, Main* main) {
-		std::string result = "";
-		int num3 = num1 - num2;
-		result = std::to_string(num3);
-		main->answerBox->ChangeValue(result);
-
-	}
-
-	void GetMultiplication(int num1, int num2, Main* main) {
-		std::string result = "";
-		int num3 = num1 * num2;
-		result = std::to_string(num3);
-		main->answerBox->ChangeValue(result);
-
-	}
-
-	void GetDivision(int num1, int num2, Main* main) {
-		std::string result = "";
-		int num3 = num1 / num2;
-		result = std::to_string(num3);
-		main->answerBox->ChangeValue(result);
-
-	}
+	//this is the vector that contains the commands (queue)
+	std::vector<IBaseCommand*> commands;
+	
 
 	void GetModulo(int num1, int num2, Main* main) {
 		std::string result = "";
@@ -125,6 +105,33 @@ public:
 		main->answerBox->ChangeValue("");
 	}
 
+	void Equal(Main* main, std::string mathFunction, int num1, int num2) {
+		if (mathFunction == "ADD") {
+			//GetAddition(num1, num2, main);
+			Add add1;
+			commands.push_back(&add1);
+		}
+		else if (mathFunction == "SUBTRACT") {
+			Subtract subtract1;
+			commands.push_back(&subtract1);
+		}
+		else if (mathFunction == "MULTIPLY") {
+			Multiply multiply1;
+			commands.push_back(&multiply1);
+		}
+		else if (mathFunction == "DIVIDE") {
+			Divide divide1;
+			commands.push_back(&divide1);
+		}
+		else if (mathFunction == "MOD") {
+			GetModulo(num1, num2, main);
+		}
+
+		for (int i = 0; i < commands.size(); i++) {
+			commands[i]->Execute(num1, num2, main);
+		}
+		commands.clear();
+	}
 };
 
 CalculatorProcessor* CalculatorProcessor::_processor = nullptr;
