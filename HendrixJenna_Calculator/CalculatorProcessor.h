@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include "Main.h"
+#include <vector>
+#include "IBaseCommand.h"
 class CalculatorProcessor
 {
 private:
@@ -22,37 +24,38 @@ public:
 	CalculatorProcessor(CalculatorProcessor& other) = delete; //copy constructor
 	void operator=(const CalculatorProcessor& other) = delete; //assignment operator
 
+	std::vector<IBaseCommand*> commands;
+	
+	//void GetAddition(int num1, int num2, Main* main) {
+	//	std::string result = "";
+	//	int num3 = num1 + num2;
+	//	result = std::to_string(num3);
+	//	main->answerBox->ChangeValue(result);
+	//}
 
-	void GetAddition(int num1, int num2, Main* main) {
-		std::string result = "";
-		int num3 = num1 + num2;
-		result = std::to_string(num3);
-		main->answerBox->ChangeValue(result);
-	}
+	//void GetSubtraction(int num1, int num2, Main* main) {
+	//	std::string result = "";
+	//	int num3 = num1 - num2;
+	//	result = std::to_string(num3);
+	//	main->answerBox->ChangeValue(result);
 
-	void GetSubtraction(int num1, int num2, Main* main) {
-		std::string result = "";
-		int num3 = num1 - num2;
-		result = std::to_string(num3);
-		main->answerBox->ChangeValue(result);
+	//}
 
-	}
-
-	void GetMultiplication(int num1, int num2, Main* main) {
+	/*void GetMultiplication(int num1, int num2, Main* main) {
 		std::string result = "";
 		int num3 = num1 * num2;
 		result = std::to_string(num3);
 		main->answerBox->ChangeValue(result);
 
-	}
+	}*/
 
-	void GetDivision(int num1, int num2, Main* main) {
-		std::string result = "";
-		int num3 = num1 / num2;
-		result = std::to_string(num3);
-		main->answerBox->ChangeValue(result);
+	//void GetDivision(int num1, int num2, Main* main) {
+	//	std::string result = "";
+	//	int num3 = num1 / num2;
+	//	result = std::to_string(num3);
+	//	main->answerBox->ChangeValue(result);
 
-	}
+	//}
 
 	void GetModulo(int num1, int num2, Main* main) {
 		std::string result = "";
