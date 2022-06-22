@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HendrixJenna_Calculator", "HendrixJenna_Calculator\HendrixJenna_Calculator.vcxproj", "{87E60CAC-C3C5-49A4-AE43-A95B48F5924E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HendrixJenna_CalculatorTests", "HendrixJenna_CalculatorTests\HendrixJenna_CalculatorTests.vcxproj", "{59A83B64-7D81-49F9-9984-D32BA27821EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{87E60CAC-C3C5-49A4-AE43-A95B48F5924E}.Release|x64.Build.0 = Release|x64
 		{87E60CAC-C3C5-49A4-AE43-A95B48F5924E}.Release|x86.ActiveCfg = Release|Win32
 		{87E60CAC-C3C5-49A4-AE43-A95B48F5924E}.Release|x86.Build.0 = Release|Win32
+		{59A83B64-7D81-49F9-9984-D32BA27821EF}.Debug|x64.ActiveCfg = Debug|x64
+		{59A83B64-7D81-49F9-9984-D32BA27821EF}.Debug|x64.Build.0 = Debug|x64
+		{59A83B64-7D81-49F9-9984-D32BA27821EF}.Debug|x86.ActiveCfg = Debug|Win32
+		{59A83B64-7D81-49F9-9984-D32BA27821EF}.Debug|x86.Build.0 = Debug|Win32
+		{59A83B64-7D81-49F9-9984-D32BA27821EF}.Release|x64.ActiveCfg = Release|x64
+		{59A83B64-7D81-49F9-9984-D32BA27821EF}.Release|x64.Build.0 = Release|x64
+		{59A83B64-7D81-49F9-9984-D32BA27821EF}.Release|x86.ActiveCfg = Release|Win32
+		{59A83B64-7D81-49F9-9984-D32BA27821EF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
